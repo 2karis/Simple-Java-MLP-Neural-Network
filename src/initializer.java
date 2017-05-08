@@ -10,24 +10,32 @@
  */
 import java.util.Random;
 
-public class weights {
+public class initializer {
     
-    public double[][] layerOneRandomWeights(){
-        double[][] val = new double[2][3];
+    public float[][] layerOneRandomWeights(){
+        float[][] val = new float[2][3];
         Random rand = new Random(); 
         for(int i = 0;i < val.length; i++){
              for( int ii = 0; ii < val[i].length; ii++){
-                val[i][ii] = rand.nextDouble();  
+                val[i][ii] = rand.nextFloat();  
             }
         }
         return val;
     }
     
-    public double[] layerTwoRandomWeights(){
-        double val[] = new double[3];
+    public float[] SetBias(){
+        float[] b = new float[3];
+        for(int i=0; i<b.length; i++){
+            b[i] = 0;
+        }
+        return b;
+    }
+    
+    public float[] layerTwoRandomWeights(){
+        float val[] = new float[3];
         Random rand = new Random();
         for( int i = 0;i < val.length;i++){
-            val[i] = rand.nextDouble();
+            val[i] = rand.nextFloat();
         }
         return val;
     }

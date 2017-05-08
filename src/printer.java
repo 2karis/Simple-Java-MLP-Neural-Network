@@ -62,4 +62,12 @@ public class printer {
         }
         System.out.println();
     }
+
+    void MultArray(float[][] hiddenCost) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    void singArray(float[] outputCost) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

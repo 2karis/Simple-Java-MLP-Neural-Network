@@ -16,7 +16,7 @@ public class BMBot {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        weights weit = new weights();
+        initializer weit = new initializer();
         Scanner get = new Scanner(System.in);
         System.out.print("\nhours slept : ");
         int hours = get.nextInt();
@@ -27,16 +27,7 @@ public class BMBot {
         double Hours = (double) hours / 7;
         double Study = (double) study / 9;
         double Train = (double) train / 100;
-        double[] input = {Hours,Study};
-        double[][] hiddW =weit.layerOneRandomWeights();
-        double[] outW = weit.layerTwoRandomWeights();
-        
-        Neuron money = new Neuron();
-        
-        double yHat = money.forwardPropagate(input,hiddW,outW);
-        
-        System.out.println(yHat);        
-              
+        double[] input = {Hours,Study};         
     }
     
 //make use of 3 dimentional arrays    

@@ -67,6 +67,7 @@ public class Neural_Network {
         return sigmoid(val);
     }
     
+    
     //backpropagate area
     
     public float deltaK(float outK, float trainK)
@@ -74,12 +75,6 @@ public class Neural_Network {
         return outK * (1 - outK) * (outK - trainK);
     }
     
-    public void ouputCost()
-    {
-        for(int i = 0;i < hidden.length;i++){
-            deltaoutputW[i] = hidden[i] * deltaK(output , trainVal);
-        }
-    }
 
     public float deltaJ(float outJ,float weight)
     {   
@@ -89,26 +84,23 @@ public class Neural_Network {
         //}
         return outJ * (1 - outJ) * dk;
     }
-
-    public void hiddenCost()
-    {
-        for(int i = 0;i < inputs.length;i++){
-            for(int ii = 0;i < hidden.length;ii++){
-                deltahiddenW[i][ii] = inputs[i] * deltaJ(hidden[ii], outputW[ii]);
-            }
-        }
-    }
     
-    public void adjustValues(){
-        for(int i = 0;i < inputs.length;i++){
-            for(int ii = 0;i < hidden.length;ii++){
-                hiddenW[i][ii] = deltahiddenW[i][ii] + hiddenW[i][ii];
-            }
+    public void backPropagate(){
+        
+        for(int i = 0;i < hidden.length;i++){
+            deltaoutputW[i] = rate * hidden[i] * deltaK(output , trainVal);
+            outputW[i] = outputW[i] + deltaoutputW[i];
+           
+            deltabias[i] = rate * deltaJ(hidden[i], outputW[i]);
+            bias[i] = deltabias[i] + bias[i]; 
         }
         
-         for(int i = 0;i < hidden.length;i++){
-            outputW[i] = outputW[i] + deltaoutputW[i];
-        }
+        for(int i = 0;i < inputs.length;i++){
+            for(int ii = 0;i < hidden.length;ii++){
+                 deltahiddenW[i][ii] = rate * inputs[i] * deltaJ(hidden[ii], outputW[ii]);
+                hiddenW[i][ii] = deltahiddenW[i][ii] + hiddenW[i][ii];
+            }
+        }       
     }
     
 }

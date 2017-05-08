@@ -24,11 +24,13 @@ public class Neural_Network {
     float deltaoutputW[];
     float rate = (float) 0.01;
     
-    public void init(){
-        initializer weit = new initializer();
-        hiddenW = weit.layerOneRandomWeights();
-        bias = weit.SetBias();
-        outputW = weit.layerTwoRandomWeights();
+    public void init(String path){
+        if(path==null){
+            initializer weit = new initializer();
+            hiddenW = weit.layerOneRandomWeights();
+            bias = weit.SetBias();
+            outputW = weit.layerTwoRandomWeights();
+        }
     }
 
     public float forwardPropagate( float input[] , float[][] hiddW , float outW[]){ 
